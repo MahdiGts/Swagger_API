@@ -2,11 +2,12 @@ const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 
+const PORT = process.env.PORT || 3000; // Use the PORT environment variable or default to 3000
+
 const app = express();
-const port = process.env.PORT || 3000; // Use PORT environment variable or default to 3000
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(port, () => {
-  console.log('Server is running on port 8000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
